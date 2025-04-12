@@ -1,0 +1,73 @@
+
+/* Timeline Section */
+.timeline {
+    padding: 5rem 1rem;
+    background: var(--bg-secondary);
+}
+
+.timeline-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    margin: 2rem 0;
+    width: calc(50% - 2rem);
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: auto;
+    padding-left: 2rem;
+}
+
+.timeline-item:nth-child(even) {
+    margin-right: auto;
+    padding-right: 2rem;
+    text-align: right;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 0;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    left: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    right: -10px;
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 0;
+    }
+
+    .timeline-item {
+        width: auto;
+        padding-left: 2rem !important;
+        text-align: left !important;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -10px;
+        right: auto;
+    }
+}

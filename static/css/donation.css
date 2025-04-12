@@ -1,0 +1,51 @@
+ /* Donation Section */
+ .donation {
+     padding: 5rem 1rem;
+     background-color: var(--bg-primary);
+ }
+
+ .donation-content {
+     max-width: 800px;
+     margin: 0 auto;
+     text-align: center;
+ }
+
+ .donation-options {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: 1.5rem;
+     margin-top: 2rem;
+ }
+
+ .donation-option {
+     background: var(--card-bg);
+     padding: 2rem;
+     border-radius: var(--border-radius);
+     cursor: pointer;
+     transition: all 0.3s;
+ }
+
+ .donation-option:hover {
+     background: var(--primary-color);
+     color: white;
+ }
+
+ .donation-amount {
+     font-size: 2rem;
+     font-weight: bold;
+     margin: 1rem 0;
+ }
+
+ .custom-donation {
+     margin-top: 2rem;
+ }
+
+ .custom-donation input {
+     width: 100%;
+     max-width: 300px;
+     padding: 1rem;
+     margin: 1rem 0;
+     font-size: 1.2rem;
+     background-color: var(--bg-secondary);
+     color: var(--text-primary);
+ }

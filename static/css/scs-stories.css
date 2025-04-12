@@ -1,0 +1,75 @@
+
+/* Success Stories Carousel */
+.success-stories {
+    padding: 5rem 1rem;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+}
+
+.story-carousel {
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-track {
+    display: flex;
+    transition: transform 0.5s ease-out;
+}
+
+.story-slide {
+    flex: 0 0 100%;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.story-image {
+    flex: 0 0 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-content {
+    flex: 1;
+}
+
+.story-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.story-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.story-indicator.active {
+    background: white;
+}
+
+@media (max-width: 768px) {
+    
+    .story-slide {
+        flex-direction: column;
+    }
+
+    .story-image {
+        flex: 0 0 200px;
+    }
+}

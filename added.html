@@ -1,0 +1,707 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrightFuture - Empowering Children</title>
+    <!-- Adding required CDN for animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      /* Previous styles remain the same */
+
+      /* New Animation Classes */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Timeline Section */
+      .timeline {
+        padding: 5rem 1rem;
+        background: #fff;
+      }
+
+      .timeline-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e74c3c;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        margin: 2rem 0;
+        width: calc(50% - 2rem);
+        position: relative;
+      }
+
+      .timeline-item:nth-child(odd) {
+        margin-left: auto;
+        padding-left: 2rem;
+      }
+
+      .timeline-item:nth-child(even) {
+        margin-right: auto;
+        padding-right: 2rem;
+        text-align: right;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #e74c3c;
+        border-radius: 50%;
+        top: 0;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot {
+        left: -10px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-dot {
+        right: -10px;
+      }
+
+      /* Team Section */
+      .team {
+        padding: 5rem 1rem;
+        background: #f8f9fa;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto 0;
+      }
+
+      .team-member {
+        text-align: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+      }
+
+      .team-member img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        object-fit: cover;
+      }
+
+      /* Success Stories Carousel */
+      .success-stories {
+        padding: 5rem 1rem;
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        color: white;
+      }
+
+      .story-carousel {
+        max-width: 1000px;
+        margin: 2rem auto 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .story-track {
+        display: flex;
+        transition: transform 0.5s ease-out;
+      }
+
+      .story-slide {
+        flex: 0 0 100%;
+        padding: 2rem;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .story-image {
+        flex: 0 0 300px;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .story-content {
+        flex: 1;
+      }
+
+      .story-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .story-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .story-indicator.active {
+        background: white;
+      }
+
+      /* FAQ Section */
+      .faq {
+        padding: 5rem 1rem;
+        background: #fff;
+      }
+
+      .faq-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        padding: 1rem;
+        background: #f8f9fa;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-answer {
+        padding: 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s, padding 0.3s;
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 1rem;
+        max-height: 500px;
+      }
+
+      /* Blog Section */
+      .blog {
+        padding: 5rem 1rem;
+        background: #f8f9fa;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto 0;
+      }
+
+      .blog-post {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .blog-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .blog-post:hover .blog-image img {
+        transform: scale(1.1);
+      }
+
+      .blog-content {
+        padding: 1.5rem;
+      }
+
+      .blog-date {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Floating Action Button */
+      .fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: #e74c3c;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        z-index: 1000;
+      }
+
+      .fab:hover {
+        transform: scale(1.1);
+      }
+
+      /* Toast Notifications */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: #333;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .timeline-line {
+          left: 0;
+        }
+
+        .timeline-item {
+          width: auto;
+          padding-left: 2rem !important;
+          text-align: left !important;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+          left: -10px;
+          right: auto;
+        }
+
+        .story-slide {
+          flex-direction: column;
+        }
+
+        .story-image {
+          flex: 0 0 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Previous content remains the same -->
+
+    <section class="timeline">
+      <h2 class="section-title">Our Journey</h2>
+      <div class="timeline-content">
+        <div class="timeline-line"></div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <h3>2018</h3>
+          <p>
+            Founded with a vision to empower children through education and art
+          </p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <h3>2019</h3>
+          <p>Launched our first art workshop program</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <h3>2020</h3>
+          <p>Initiated environmental awareness programs</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <h3>2021</h3>
+          <p>Started girl support initiative</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <h3>2022</h3>
+          <p>Reached 1000+ children through our programs</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team">
+      <h2 class="section-title">Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member fade-in">
+          <img src="/api/placeholder/150/150" alt="Team Member 1" />
+          <h3>Sarah Wilson</h3>
+          <p>Executive Director</p>
+        </div>
+        <div class="team-member fade-in">
+          <img src="/api/placeholder/150/150" alt="Team Member 2" />
+          <h3>John Davis</h3>
+          <p>Program Coordinator</p>
+        </div>
+        <div class="team-member fade-in">
+          <img src="/api/placeholder/150/150" alt="Team Member 3" />
+          <h3>Maria Garcia</h3>
+          <p>Art Director</p>
+        </div>
+        <div class="team-member fade-in">
+          <img src="/api/placeholder/150/150" alt="Team Member 4" />
+          <h3>David Chen</h3>
+          <p>Community Manager</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="success-stories">
+      <h2 class="section-title">Success Stories</h2>
+      <div class="story-carousel">
+        <div class="story-track">
+          <div class="story-slide">
+            <div class="story-image">
+              <img src="/api/placeholder/300/300" alt="Success Story 1" />
+            </div>
+            <div class="story-content">
+              <h3>Maya's Journey</h3>
+              <p>
+                Through our art program, Maya discovered her passion for
+                painting and has won several local competitions.
+              </p>
+            </div>
+          </div>
+          <div class="story-slide">
+            <div class="story-image">
+              <img src="/api/placeholder/300/300" alt="Success Story 2" />
+            </div>
+            <div class="story-content">
+              <h3>The Green Warriors</h3>
+              <p>
+                A group of children initiated their own neighborhood cleaning
+                campaign after participating in our environmental program.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="story-indicators"></div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-content">
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h3>How can I volunteer?</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              You can volunteer by filling out our volunteer form or contacting
+              us directly. We have various programs that need support.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h3>What age groups do you work with?</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              We work with children aged 6-16 years old across all our programs.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h3>How are donations used?</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Donations are used to fund our programs, purchase supplies, and
+              support children in need.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog">
+      <h2 class="section-title">Latest News</h2>
+      <div class="blog-grid">
+        <article class="blog-post fade-in">
+          <div class="blog-image">
+            <img src="/api/placeholder/400/300" alt="Blog Post 1" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-date">November 1, 2024</div>
+            <h3>Annual Art Exhibition Success</h3>
+            <p>
+              Our annual art exhibition showcased incredible talent from our
+              young artists...
+            </p>
+          </div>
+        </article>
+        <article class="blog-post fade-in">
+          <div class="blog-image">
+            <img src="/api/placeholder/400/300" alt="Blog Post 2" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-date">October 28, 2024</div>
+            <h3>Environmental Initiative Launch</h3>
+            <p>
+              New program launched to teach children about environmental
+              conservation...
+            </p>
+          </div>
+        </article>
+        <article class="blog-post fade-in">
+          <div class="blog-image">
+            <img src="/api/placeholder/400/300" alt="Blog Post 3" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-date">October 25, 2024</div>
+            <h3>Supporting Girls' Education</h3>
+            <p>
+              Our new initiative to support girls' education has reached over
+              200 students...
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <a href="#" class="fab" id="scrollToTop">↑</a>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      // Previous script content remains
+
+      // Timeline Animation
+      const timelineItems = document.querySelectorAll(".timeline-item");
+      const fadeElements = document.querySelectorAll(".fade-in");
+
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach((element) => {
+        fadeObserver.observe(element);
+      });
+
+      // Success Stories Carousel
+      const storyTrack = document.querySelector(".story-track");
+      const storySlides = document.querySelectorAll(".story-slide");
+      const indicatorsContainer = document.querySelector(".story-indicators");
+      let currentStoryIndex = 0;
+
+      // Create indicators
+      storySlides.forEach((_, index) => {
+        const indicator = document.createElement("div");
+        indicator.classList.add("story-indicator");
+        if (index === 0) indicator.classList.add("active");
+        indicator.addEventListener("click", () => goToStory(index));
+        indicatorsContainer.appendChild(indicator);
+      });
+
+      function goToStory(index) {
+        currentStoryIndex = index;
+        updateStoryCarousel();
+      }
+
+      function updateStoryCarousel() {
+        storyTrack.style.transform = `translateX(-${currentStoryIndex * 100}%)`;
+        document
+          .querySelectorAll(".story-indicator")
+          .forEach((indicator, index) => {
+            indicator.classList.toggle("active", index === currentStoryIndex);
+          });
+      }
+
+      // Auto-advance stories
+      setInterval(() => {
+        currentStoryIndex = (currentStoryIndex + 1) % storySlides.length;
+        updateStoryCarousel();
+      }, 5000);
+
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+        question.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+
+          // Close all FAQ items
+          faqItems.forEach((faqItem) => {
+            faqItem.classList.remove("active");
+            faqItem.querySelector(".toggle").textContent = "+";
+          });
+
+          // Open clicked item if it wasn't active
+          if (!isActive) {
+            item.classList.add("active");
+            item.querySelector(".toggle").textContent = "-";
+          }
+        });
+      });
+
+      // Scroll to Top Button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.style.display = "flex";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Toast Notification System
+      const toast = document.getElementById("toast");
+
+      function showToast(message, duration = 3000) {
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, duration);
+      }
+
+      // Enhanced Form Submissions
+      const forms = document.querySelectorAll("form");
+
+      forms.forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Simulate form submission
+          setTimeout(() => {
+            showToast("Thank you for your submission!");
+            form.reset();
+          }, 1000);
+        });
+      });
+
+      // Donation Amount Selection
+      const donationOptions = document.querySelectorAll(".donation-option");
+      const customAmountInput = document.querySelector(
+        ".custom-donation input"
+      );
+
+      donationOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          // Remove active class from all options
+          donationOptions.forEach((opt) => opt.classList.remove("active"));
+
+          // Add active class to clicked option
+          option.classList.add("active");
+
+          // Update custom amount input
+          customAmountInput.value = option.dataset.amount;
+
+          showToast(`Selected donation amount: $${option.dataset.amount}`);
+        });
+      });
+
+      // Enhanced Navigation
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (link.classList.contains("cta-button")) return;
+
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: "smooth",
+            });
+
+            // Update URL without page jump
+            history.pushState(null, null, targetId);
+          }
+        });
+      });
+
+      // Lazy Loading Images
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll("img[data-src]").forEach((img) => {
+        imageObserver.observe(img);
+      });
+    </script>
+  </body>
+</html>

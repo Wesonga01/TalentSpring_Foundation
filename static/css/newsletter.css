@@ -1,0 +1,33 @@
+/* Newsletter Section */
+.newsletter {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 3rem 1rem;
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
